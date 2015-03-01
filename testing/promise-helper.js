@@ -7,8 +7,8 @@ var PromiseHelper = (function () {
         });
     }
  
-    PromiseHelper.prototype.resolve = function () {
-        this.deferred.resolve(this.data);
+    PromiseHelper.prototype.resolve = function (data) {
+        this.deferred.resolve(data);
         this.$rootScope.$apply();
     };
  
@@ -17,8 +17,7 @@ var PromiseHelper = (function () {
         this.$rootScope.$apply();
     };
  
-    PromiseHelper.prototype.getHttpPromiseMock = function (data) {
-        this.data = data;
+    PromiseHelper.prototype.getHttpPromiseMock = function () {
         this.deferred = this.$q.defer();
 
         var promise = this.deferred.promise;
