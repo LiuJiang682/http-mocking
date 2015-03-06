@@ -1,5 +1,5 @@
 {
-  "name": "$http-mocking",
+  "name": "http-mocking",
   "version": "1.0.0",
   "description": "Demo app for mocking $http access.",
   "main": "index.js",
