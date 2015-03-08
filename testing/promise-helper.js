@@ -33,7 +33,7 @@ var PromiseHelper = (function () {
     };
  
     PromiseHelper.prototype.getHttpPromiseMock = function () {
-        var promise = this.deferred.promise;
+        var promise = this._deferred.promise;
         return wrapPromise(promise);
     };
  
