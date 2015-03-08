@@ -25,10 +25,10 @@ describe("ContactsController tests", function() {
         contactsServiceMock.getContacts.and.returnValue(
             promiseHelper.getHttpPromiseMock());
 
-        var ctrl = new ContactsController(contactsServiceMock);
+        promiseHelper.willResolveWith(contacts);
      
         // Act
-        promiseHelper.resolve(contacts);
+        var ctrl = new ContactsController(contactsServiceMock);
      
         // Assert
         expect(ctrl.contacts).toBeDefined();
@@ -44,16 +44,17 @@ describe("ContactsController tests", function() {
 
         contactsServiceMock.getContacts.and.returnValue(
             promiseHelper.getHttpPromiseMock());
-
-        var ctrl = new ContactsController(contactsServiceMock);
+        
+        promiseHelper.willReject();
         
         // Act
+        var ctrl;
         expect(function() {     
-            promiseHelper.reject();
+            ctrl = new ContactsController(contactsServiceMock);
         }).toThrow();
      
         // Assert
-        expect(ctrl.contacts).not.toBeDefined();
+        expect(ctrl).not.toBeDefined();
      
         expect(contactsServiceMock.getContacts).toHaveBeenCalled();
     });
